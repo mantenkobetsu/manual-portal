@@ -227,7 +227,7 @@
   .cat-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   .cat-count {
@@ -864,6 +864,37 @@
     font-size: 11px; color: rgba(160,100,0,0.95); line-height: 1.75;
   }
 
+  /* ── INCENTIVE MODAL ── */
+  .incentive-box { display: flex; flex-direction: column; gap: 12px; }
+  .incentive-note {
+    font-size: 10px; color: var(--text-tertiary);
+    background: var(--surface2); border-radius: 8px;
+    padding: 8px 12px; line-height: 1.7; font-family: var(--mono);
+  }
+  .incentive-table {
+    width: 100%; border-collapse: collapse; font-size: 12px;
+  }
+  .incentive-table th {
+    background: var(--surface2); color: var(--text-secondary);
+    font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 8px 12px; text-align: left;
+    border-bottom: 2px solid var(--border-hover);
+  }
+  .incentive-table th:last-child { text-align: right; }
+  .incentive-table td {
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    color: var(--text-primary); vertical-align: middle;
+  }
+  .incentive-table td:last-child {
+    text-align: right; font-family: var(--mono); font-weight: 700;
+    color: var(--accent); font-variant-numeric: tabular-nums;
+  }
+  .incentive-table tr:last-child td { border-bottom: none; }
+  .incentive-table tr:nth-child(even) td { background: rgba(67,97,238,0.025); }
+  .incentive-table tr:hover td { background: var(--surface2) !important; }
+  .incentive-table tr.top td { background: rgba(16,185,129,0.06) !important; }
+  .incentive-table tr.top td:last-child { color: var(--accent4); }
+
   /* ── SALARY MODAL ── */
   .modal-overlay {
     display: none;
@@ -1082,7 +1113,6 @@
         <div class="cat-name">講習</div>
         <div class="cat-desc">夏期・冬期講習やインセンティブ</div>
         <div class="cat-footer">
-          <div class="cat-count">02 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1092,7 +1122,6 @@
         <div class="cat-name">IT・システム</div>
         <div class="cat-desc">PC初期設定やモノグサなどシステム関連</div>
         <div class="cat-footer">
-          <div class="cat-count">04 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1102,7 +1131,6 @@
         <div class="cat-name">発注/修繕</div>
         <div class="cat-desc">物品購入・修繕申請</div>
         <div class="cat-footer">
-          <div class="cat-count">02 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1112,7 +1140,6 @@
         <div class="cat-name">kintone</div>
         <div class="cat-desc">kintone 操作・設定</div>
         <div class="cat-footer">
-          <div class="cat-count">02 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1122,7 +1149,6 @@
         <div class="cat-name">comiru</div>
         <div class="cat-desc">請求書・アカウント・口座・面談予約</div>
         <div class="cat-footer">
-          <div class="cat-count">07 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1132,7 +1158,6 @@
         <div class="cat-name">講師</div>
         <div class="cat-desc">講師情報の登録・契約手続き</div>
         <div class="cat-footer">
-          <div class="cat-count">01 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1142,7 +1167,6 @@
         <div class="cat-name">給与・休暇</div>
         <div class="cat-desc">給与テーブル・賞与規定</div>
         <div class="cat-footer">
-          <div class="cat-count">04 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1152,7 +1176,6 @@
         <div class="cat-name">人事</div>
         <div class="cat-desc">研修期間・配属移動</div>
         <div class="cat-footer">
-          <div class="cat-count">02 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1162,7 +1185,6 @@
         <div class="cat-name">教室長タスク</div>
         <div class="cat-desc">写真掲載・ウェブサイト更新</div>
         <div class="cat-footer">
-          <div class="cat-count">02 docs</div>
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
       </div>
@@ -1275,6 +1297,77 @@
     </div>
   </div>
 
+  <!-- INCENTIVE MODAL -->
+  <div class="modal-overlay" id="incentiveModal">
+    <div class="modal-box" style="max-width:520px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">インセンティブ実績例</div>
+          <div class="modal-subtitle">教室別 実績金額</div>
+        </div>
+        <button class="modal-close" id="incentiveClose">✕</button>
+      </div>
+      <div class="bonus-tabs-wrap" id="incentiveTabs"></div>
+      <div class="modal-body" id="incentiveBody"></div>
+    </div>
+  </div>
+
+  <!-- KINTONE BATCH MODAL -->
+  <div class="modal-overlay" id="kintoneBatchModal">
+    <div class="modal-box" style="max-width:560px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">夜間バッチ（自動処理）</div>
+          <div class="modal-subtitle">kintone 自動処理フロー</div>
+        </div>
+        <button class="modal-close" id="kintoneBatchClose">✕</button>
+      </div>
+      <div class="modal-body" id="kintoneBatchBody"></div>
+    </div>
+  </div>
+
+  <!-- KYUKA MODAL -->
+  <div class="modal-overlay" id="kyukaModal">
+    <div class="modal-box" style="max-width:560px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">休暇</div>
+          <div class="modal-subtitle">休暇制度について</div>
+        </div>
+        <button class="modal-close" id="kyukaClose">✕</button>
+      </div>
+      <div class="modal-body" id="kyukaBody"></div>
+    </div>
+  </div>
+
+  <!-- IDOU MODAL -->
+  <div class="modal-overlay" id="idouModal">
+    <div class="modal-box" style="max-width:500px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">配属移動</div>
+          <div class="modal-subtitle">人事異動・異動願いについて</div>
+        </div>
+        <button class="modal-close" id="idouClose">✕</button>
+      </div>
+      <div class="modal-body" id="idouBody"></div>
+    </div>
+  </div>
+
+  <!-- RINJI BONUS MODAL -->
+  <div class="modal-overlay" id="rinjiBonusModal">
+    <div class="modal-box" style="max-width:560px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">臨時賞与</div>
+          <div class="modal-subtitle">高校継続インセンティブ・リファラルボーナス</div>
+        </div>
+        <button class="modal-close" id="rinjiBonusClose">✕</button>
+      </div>
+      <div class="modal-body" id="rinjiBonusBody"></div>
+    </div>
+  </div>
+
   <!-- SALARY MODAL -->
   <div class="modal-overlay" id="salaryModal">
     <div class="modal-box">
@@ -1296,7 +1389,8 @@
   const MANUALS = [
     // 0: 講習
     [
-      { name: "講習ルール", detail: "夏期冬期講習の実施ルール", url: "https://held-mimosa-64c.notion.site/1f74bf837e278045885bfd3969dcdc4d" },
+      { name: "講習ルール", detail: "夏期/冬期講習の実施ルール", url: "https://held-mimosa-64c.notion.site/1f74bf837e278045885bfd3969dcdc4d" },
+      { name: "インセンティブ実績例", detail: "教室別インセンティブ実績金額", url: "#", modal: "incentive" },
     ],
     // 1: IT・システム
     [
@@ -1313,7 +1407,7 @@
     // 3: kintone
     [
       { name: "集計表の数値について", detail: "各指標の定義・計算式・社内基準値", url: "#", modal: "kintone" },
-      { name: "自動処理の仕組み", detail: "kintone の自動処理フロー・設定の解説", url: "https://held-mimosa-64c.notion.site/1fc4bf837e27803b8e87e08c9cb6bbb1?source=copy_link" },
+      { name: "自動処理の仕組み", detail: "kintone の自動処理フローの解説", url: "#", modal: "kintone_batch" },
     ],
     // 4: comiru
     [
@@ -1331,15 +1425,17 @@
     ],
     // 6: 給与・休暇
     [
-      { name: "給与テーブル", detail: "職種別・等級別の給与体系一覧", url: "#", modal: "salary" },
-      { name: "賞与規定", detail: "2025年度下期 賞与・インセンティブルール", url: "#", modal: "bonus" },
+      { name: "給与テーブル", detail: "等級別の給与体系一覧", url: "#", modal: "salary" },
+      { name: "賞与規定", detail: "賞与・インセンティブルール", url: "#", modal: "bonus" },
       { name: "研修期間中の賞与ルール", detail: "入社後初回賞与の支給条件・按分方法", url: "#", modal: "training_bonus" },
       { name: "通勤/住宅手当", detail: "手当の選択方法・支給条件", url: "#", modal: "tsukkin" },
+      { name: "休暇", detail: "休暇制度について", url: "#", modal: "kyuka" },
+      { name: "臨時賞与", detail: "高校継続インセンティブ・リファラルボーナス", url: "#", modal: "rinji_bonus" },
     ],
     // 7: 人事
     [
-      { name: "研修期間", detail: "入社後の研修スケジュール・評価基準", url: "#" },
-      { name: "配属移動", detail: "配属フロー・研修後の異動ルール", url: "#", modal: "haizoku" },
+      { name: "研修期間", detail: "配属フロー・研修後の異動ルール", url: "#", modal: "haizoku" },
+      { name: "配属移動", detail: "人事異動・異動願いについて", url: "#", modal: "idou" },
     ],
     // 8: 教室長タスク
     [
@@ -1347,6 +1443,22 @@
       { name: "講師写真の更新（ウェブサイト）", detail: "ウェブサイト上の講師紹介写真の更新方法", url: "#" },
     ],
   ];
+
+  const MODAL_FNS = {
+    tsukkin: 'openTsukkinModal',
+    haizoku: 'openHaizokuModal',
+    training_bonus: 'openTrainingBonusModal',
+    bonus: 'openBonusModal',
+    salary: 'openSalaryModal',
+    kintone: 'openKintoneModal',
+    kintone_batch: 'openKintoneBatchModal',
+    rinji_bonus: 'openRinjiBonusModal',
+    idou: 'openIdouModal',
+    kyuka: 'openKyukaModal',
+    purchase: 'openPurchaseModal',
+    repair: 'openRepairModal',
+    incentive: 'openIncentiveModal',
+  };
 
   const COLORS = [
     "#4361ee","#06b6d4","#10b981","#8b5cf6",
@@ -1367,71 +1479,8 @@
         <div class="manual-panel-title">マニュアル一覧</div>
         <div class="manual-list">
           ${items.map(m => {
-            if (m.modal === 'tsukkin') {
-              return `<a class="manual-link" href="#" onclick="openTsukkinModal();return false;">
-                  <span class="manual-link-dot" style="background:${color}"></span>
-                  <span class="manual-link-content">
-                    <span class="manual-link-name">${m.name}</span>
-                    ${m.detail ? `<span class="manual-link-detail">${m.detail}</span>` : ""}
-                  </span>
-                  <span class="manual-link-arrow">⊞</span>
-                </a>`;
-            } else if (m.modal === 'haizoku') {
-              return `<a class="manual-link" href="#" onclick="openHaizokuModal();return false;">
-                  <span class="manual-link-dot" style="background:${color}"></span>
-                  <span class="manual-link-content">
-                    <span class="manual-link-name">${m.name}</span>
-                    ${m.detail ? `<span class="manual-link-detail">${m.detail}</span>` : ""}
-                  </span>
-                  <span class="manual-link-arrow">⊞</span>
-                </a>`;
-            } else if (m.modal === 'training_bonus') {
-              return `<a class="manual-link" href="#" onclick="openTrainingBonusModal();return false;">
-                  <span class="manual-link-dot" style="background:${color}"></span>
-                  <span class="manual-link-content">
-                    <span class="manual-link-name">${m.name}</span>
-                    ${m.detail ? `<span class="manual-link-detail">${m.detail}</span>` : ""}
-                  </span>
-                  <span class="manual-link-arrow">⊞</span>
-                </a>`;
-            } else if (m.modal === 'bonus') {
-              return `<a class="manual-link" href="#" onclick="openBonusModal();return false;">
-                  <span class="manual-link-dot" style="background:${color}"></span>
-                  <span class="manual-link-content">
-                    <span class="manual-link-name">${m.name}</span>
-                    ${m.detail ? `<span class="manual-link-detail">${m.detail}</span>` : ""}
-                  </span>
-                  <span class="manual-link-arrow">⊞</span>
-                </a>`;
-            } else if (m.modal === 'salary') {
-              return `<a class="manual-link" href="#" onclick="openSalaryModal();return false;">
-                  <span class="manual-link-dot" style="background:${color}"></span>
-                  <span class="manual-link-content">
-                    <span class="manual-link-name">${m.name}</span>
-                    ${m.detail ? `<span class="manual-link-detail">${m.detail}</span>` : ""}
-                  </span>
-                  <span class="manual-link-arrow">⊞</span>
-                </a>`;
-            } else if (m.modal === 'kintone') {
-              return `<a class="manual-link" href="#" onclick="openKintoneModal();return false;">
-                  <span class="manual-link-dot" style="background:${color}"></span>
-                  <span class="manual-link-content">
-                    <span class="manual-link-name">${m.name}</span>
-                    ${m.detail ? `<span class="manual-link-detail">${m.detail}</span>` : ""}
-                  </span>
-                  <span class="manual-link-arrow">⊞</span>
-                </a>`;
-            } else if (m.modal === 'purchase') {
-              return `<a class="manual-link" href="#" onclick="openPurchaseModal();return false;">
-                  <span class="manual-link-dot" style="background:${color}"></span>
-                  <span class="manual-link-content">
-                    <span class="manual-link-name">${m.name}</span>
-                    ${m.detail ? `<span class="manual-link-detail">${m.detail}</span>` : ""}
-                  </span>
-                  <span class="manual-link-arrow">⊞</span>
-                </a>`;
-            } else if (m.modal === 'repair') {
-              return `<a class="manual-link" href="#" onclick="openRepairModal();return false;">
+            if (m.modal && MODAL_FNS[m.modal]) {
+              return `<a class="manual-link" href="#" onclick="${MODAL_FNS[m.modal]}();return false;">
                   <span class="manual-link-dot" style="background:${color}"></span>
                   <span class="manual-link-content">
                     <span class="manual-link-name">${m.name}</span>
@@ -1811,14 +1860,14 @@
       name: "問体率",
       formula: "体験数 ／ 問合せ数",
       desc: "問合せに対して体験につながった割合",
-      note: "塾ナビの件数に左右されるので教室によって結構違う",
+      note: "塾ナビの件数に左右されるので教室によって異なる",
       bench: "社内基準 66%"
     },
     {
       name: "問体率（純）",
       formula: "体験数（純） ／ 問合せ数（純）",
       desc: "塾ナビ以外の問合せ（純問合せ）に対する体験率",
-      note: "80%切るとしんどい",
+      note: "80%切るときつい",
       bench: "社内基準 80%"
     },
     {
@@ -1899,9 +1948,9 @@
     const tabsEl = document.getElementById('salaryTabs');
     const bodyEl = document.getElementById('salaryBody');
 
-    // Swap modal title
-    document.querySelector('.modal-title').textContent = '集計表の各数値について';
-    document.querySelector('.modal-subtitle').textContent = 'kintone 集計表ガイド';
+    // Swap modal title (scoped to this overlay only)
+    overlay.querySelector('.modal-title').textContent = '集計表の数値';
+    overlay.querySelector('.modal-subtitle').textContent = 'kintone 集計表ガイド';
 
     tabsEl.innerHTML = '';
     bodyEl.innerHTML = `<div class="metrics-grid">${renderMetrics()}</div>`;
@@ -1910,12 +1959,208 @@
 
     // Restore title on close
     const restoreTitle = () => {
-      document.querySelector('.modal-title').textContent = '賃金テーブル';
-      document.querySelector('.modal-subtitle').textContent = '2025年10月以降適用';
+      overlay.querySelector('.modal-title').textContent = '賃金テーブル';
+      overlay.querySelector('.modal-subtitle').textContent = '2025年10月以降適用';
     };
     document.getElementById('modalClose').addEventListener('click', restoreTitle, { once: true });
     overlay.addEventListener('click', (e) => { if(e.target===overlay) restoreTitle(); }, { once: true });
   }
+
+
+  // ── KYUKA (休暇) MODAL ──
+  function openKyukaModal() {
+    document.getElementById('kyukaBody').innerHTML = `
+      <div class="modal-note">休日はまんてん個別とまんてん個別プラスで異なるため、社員カレンダーを確認してください。</div>
+      <div class="training-box">
+        <div class="training-card">
+          <div class="training-card-title">① 調整休暇</div>
+          <div class="training-rule">年間休日を調整するために、月によっては調整休暇を定めています。</div>
+          <div class="training-note">こちらは必ず当月中に取得してください。</div>
+          <div class="training-example">
+            <strong>例）9月調整休暇1日</strong><br>
+            9月中に必ず使用。10月への持越しは不可
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="training-card-title">② 特別休暇</div>
+          <table class="bonus-rule-table">
+            <thead><tr><th>区分</th><th>取得可能期間</th><th>日数</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>本人が結婚するとき</td>
+                <td>結婚式又は入籍のいずれか遅い日から起算して６か月以内</td>
+                <td><span class="bonus-badge">５労働日</span></td>
+              </tr>
+              <tr>
+                <td>子が結婚するとき</td>
+                <td>子の結婚式当日を含む</td>
+                <td><span class="bonus-badge">２労働日</span></td>
+              </tr>
+              <tr>
+                <td>妻が出産するとき</td>
+                <td>出産予定日又は出産日を含む</td>
+                <td><span class="bonus-badge">２労働日</span></td>
+              </tr>
+              <tr>
+                <td>父母、配偶者又は子が死亡したとき</td>
+                <td>死亡した日から</td>
+                <td><span class="bonus-badge">３労働日</span></td>
+              </tr>
+              <tr>
+                <td>祖父母若しくは配偶者の父母又は兄弟姉妹が死亡したとき</td>
+                <td>死亡した日から</td>
+                <td><span class="bonus-badge">２労働日</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+    document.getElementById('kyukaModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('kyukaClose').addEventListener('click', () => {
+    document.getElementById('kyukaModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('kyukaModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+
+  // ── IDOU (配属移動) MODAL ──
+  function openIdouModal() {
+    document.getElementById('idouBody').innerHTML = `
+      <div class="training-box">
+        <div class="training-card">
+          <div class="training-rule">人事異動は基本的に毎年3月のタイミングで行います。</div>
+          <div class="training-note">
+            【異動願い申請】は随時出していただいてかまいません。<br>
+            異動は会社の総合的判断ですが、異動願いを出すことで希望が通る可能性もあります。
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('idouModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('idouClose').addEventListener('click', () => {
+    document.getElementById('idouModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('idouModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+
+  // ── RINJI BONUS (臨時賞与) MODAL ──
+  function openRinjiBonusModal() {
+    document.getElementById('rinjiBonusBody').innerHTML = `
+      <div class="training-box">
+        <div class="training-card">
+          <div class="training-card-title">① 高校継続インセンティブ</div>
+          <div class="training-rule">中3生の高校継続20％超えした場合、継続した生徒×1万支給</div>
+          <div class="training-example">
+            <strong>例）中3生20名（12月在籍時点）、高校継続7名の場合</strong><br>
+            20％（4名）を超えているので <strong>7万支給</strong>
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="training-card-title">② リファラル</div>
+          <div class="training-rule">紹介によって入社した社員が3か月勤務した場合、3か月経過後に支給</div>
+          <div class="training-note">
+            経験者：<strong>30万円</strong>／教室の講師から社員：<strong>20万円</strong>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('rinjiBonusModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('rinjiBonusClose').addEventListener('click', () => {
+    document.getElementById('rinjiBonusModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('rinjiBonusModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+
+  // ── KINTONE BATCH MODAL ──
+  function openKintoneBatchModal() {
+    document.getElementById('kintoneBatchBody').innerHTML = `
+      <div class="modal-note">kintoneでは毎晩23時〜、夜間バッチ（自動処理）をいくつか行なっているので紹介します</div>
+      <div class="repair-box">
+        <div class="repair-step">
+          <div class="repair-num">1</div>
+          <div class="repair-content">
+            <div class="repair-title">集計表の更新</div>
+            <div class="repair-desc">
+              対象：【マスタ】売上、問合せ、生徒、支出<br>
+              上記4つの【マスタ】を集計して、集計表アプリを最新にする処理を行っています
+            </div>
+          </div>
+        </div>
+        <div class="repair-step">
+          <div class="repair-num">2</div>
+          <div class="repair-content">
+            <div class="repair-title">退会生徒数のカウント</div>
+            <div class="repair-desc">
+              退会が決まった生徒に関しては、【マスタ】生徒に「退会日付」を入力します。<br>
+              この「退会日付」を集計し、3月の退会生徒は○人、4月の退会生徒は△人・・・というデータを作って集計表に反映しています。
+            </div>
+          </div>
+        </div>
+        <div class="repair-caution">⚠ よって、【マスタ】生徒は常に最新の状態を保ってください</div>
+
+        <div class="repair-step">
+          <div class="repair-num">3</div>
+          <div class="repair-content">
+            <div class="repair-title">【マスタ】売上 → 【マスタ】生徒　生徒名の自動追加</div>
+            <div class="repair-desc">
+              入会された方は、【マスタ】売上に、生徒名を追加すると思います。<br>
+              そのままの流れで【マスタ】生徒にも生徒名追加すればいいのですが、わざわざ手打ちしてなくてもいいんじゃないか、ということで毎晩自動追加処理としています。<br><br>
+              【マスタ】売上の名前が違うと別生徒扱いになります。例えば、「まんてん太郎」、「まんてん 太郎」、「まんてん　太郎」は全て別生徒扱いです。
+            </div>
+          </div>
+        </div>
+        <div class="repair-caution">⚠ 【マスタ】売上に生徒名を入力する際は、姓名の間にスペースを入れない！で統一してください</div>
+
+        <div class="repair-step">
+          <div class="repair-num">4</div>
+          <div class="repair-content">
+            <div class="repair-title">【マスタ】生徒と【マスタ】学校を結合 → シェア率</div>
+            <div class="repair-desc">
+              シェア率を見る機会はあまり無いですが、現在在籍している生徒の「学校」を集計して【マスタ】学校に入力されている「学校の生徒数」と結合しています。<br>
+              これにより、まんてん個別に通っている生徒数／学校全体の生徒数 ＝ シェア率が算出されます。
+            </div>
+            <div class="haizoku-alt">※近辺の競合の数にもよりますが、5％を超えると良い感じです</div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('kintoneBatchModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('kintoneBatchClose').addEventListener('click', () => {
+    document.getElementById('kintoneBatchModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('kintoneBatchModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
 
 
   // ── BONUS DATA ──
@@ -2324,6 +2569,105 @@
     document.body.style.overflow = '';
   });
   document.getElementById('repairModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+
+  // ── INCENTIVE MODAL ──
+  const INCENTIVE_SHEETS = [
+    {
+      name: "2025年夏",
+      results: [
+        { name: "大石", amount: 524413 },
+        { name: "西新町", amount: 478475 },
+        { name: "住吉駅前", amount: 320200 },
+        { name: "二見", amount: 246163 },
+        { name: "東垂水", amount: 233613 },
+        { name: "西鈴蘭台", amount: 204300 },
+        { name: "兵庫駅前", amount: 196325 },
+        { name: "六甲", amount: 195388 },
+        { name: "東加古川", amount: 186050 },
+        { name: "大久保", amount: 138288 },
+        { name: "垂水駅前", amount: 131400 },
+        { name: "垂水星陵台", amount: 123675 },
+        { name: "湊川", amount: 121588 },
+        { name: "須磨月見山", amount: 103925 },
+        { name: "舞子坂", amount: 85488 },
+        { name: "加古川", amount: 84575 },
+        { name: "山の街", amount: 12688 },
+        { name: "西明石", amount: 9913 },
+        { name: "新長田", amount: 6488 },
+      ]
+    },
+    {
+      name: "2025年冬",
+      results: [
+        { name: "西新町", amount: 468275 },
+        { name: "大石", amount: 332975 },
+        { name: "東加古川", amount: 173725 },
+        { name: "六甲", amount: 170925 },
+        { name: "加古川", amount: 147788 },
+        { name: "住吉駅前", amount: 143850 },
+        { name: "須磨月見山", amount: 125025 },
+        { name: "西鈴蘭台", amount: 104450 },
+        { name: "兵庫駅前", amount: 99350 },
+        { name: "山の街", amount: 30025 },
+        { name: "垂水駅前", amount: 25325 },
+        { name: "西明石", amount: 24550 },
+        { name: "新長田", amount: 0 },
+        { name: "湊川", amount: 0 },
+        { name: "東垂水", amount: 0 },
+        { name: "大久保", amount: 0 },
+        { name: "二見", amount: 0 },
+        { name: "舞子坂", amount: 0 },
+        { name: "垂水星陵台", amount: 0 },
+      ]
+    },
+  ];
+
+  function renderIncentive(idx) {
+    const sheet = INCENTIVE_SHEETS[idx];
+    const maxAmount = Math.max(...sheet.results.map(r => r.amount));
+    let h = '<div class="incentive-box">';
+    h += '<div class="incentive-note">教室ごとのインセンティブ支給実績</div>';
+    h += '<table class="incentive-table"><thead><tr><th>教室</th><th>実績金額</th></tr></thead><tbody>';
+    sheet.results.forEach(r => {
+      const isTop = r.amount === maxAmount && maxAmount > 0;
+      h += `<tr class="${isTop ? 'top' : ''}"><td>${r.name}</td><td>¥${fmt(r.amount)}</td></tr>`;
+    });
+    h += '</tbody></table></div>';
+    return h;
+  }
+
+  function openIncentiveModal() {
+    const tabsEl = document.getElementById('incentiveTabs');
+    const bodyEl = document.getElementById('incentiveBody');
+
+    tabsEl.innerHTML = INCENTIVE_SHEETS.map((s, i) =>
+      `<div class="bonus-tab${i===0?' active':''}" data-idx="${i}">${s.name}</div>`
+    ).join('');
+
+    bodyEl.innerHTML = renderIncentive(0);
+
+    tabsEl.querySelectorAll('.bonus-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabsEl.querySelectorAll('.bonus-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        bodyEl.innerHTML = renderIncentive(parseInt(tab.dataset.idx));
+      });
+    });
+
+    document.getElementById('incentiveModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('incentiveClose').addEventListener('click', () => {
+    document.getElementById('incentiveModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('incentiveModal').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) {
       e.currentTarget.classList.remove('open');
       document.body.style.overflow = '';
