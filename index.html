@@ -377,6 +377,76 @@
   .c8 .cat-icon { background: rgba(249,115,22,0.09); }
   .c8::before { background: var(--accent8); }
 
+  .event-section { margin-bottom: 40px; }
+
+  .event-wide-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s, background 0.2s;
+    box-shadow: var(--shadow);
+  }
+  .event-wide-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+    background: var(--surface2);
+  }
+
+  .event-wide-icon {
+    width: 40px; height: 40px;
+    border-radius: var(--radius-sm);
+    background: rgba(6,182,212,0.09);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .event-wide-body { flex: 1; min-width: 0; }
+
+  .event-wide-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+  }
+
+  .event-wide-desc {
+    font-size: 10px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .event-wide-toggle { flex-shrink: 0; }
+
+  .event-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .event-item {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 14px;
+    transition: border-color 0.15s;
+  }
+  .event-item:hover { border-color: var(--border-hover); }
+
+  .event-item-period {
+    font-family: var(--mono); font-size: 10px; font-weight: 700;
+    color: var(--accent2); background: rgba(6,182,212,0.09);
+    border: 1px solid rgba(6,182,212,0.2);
+    border-radius: 6px; padding: 4px 9px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+
+  .event-item-name {
+    font-size: 12px; font-weight: 600; color: var(--text-primary);
+    line-height: 1.5;
+  }
+
   .announce {
     background: var(--surface);
     border: 1.5px solid var(--border);
@@ -1192,13 +1262,38 @@
     </div>
   </section>
 
+  <section class="event-section">
+    <div class="event-wide-card" id="eventCard" onclick="openEventModal()">
+      <div class="event-wide-icon">🗓️</div>
+      <div class="event-wide-body">
+        <div class="event-wide-name">イベント</div>
+        <div class="event-wide-desc">模試・入試対策・説明会などの年間スケジュール</div>
+      </div>
+      <div class="cat-toggle event-wide-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
+    </div>
+  </section>
+
+  <!-- EVENT MODAL -->
+  <div class="modal-overlay" id="eventModal">
+    <div class="modal-box" style="max-width:560px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">イベント</div>
+          <div class="modal-subtitle">年間スケジュール</div>
+        </div>
+        <button class="modal-close" id="eventClose">✕</button>
+      </div>
+      <div class="modal-body" id="eventBody"></div>
+    </div>
+  </div>
+
 
 <!-- BONUS MODAL -->
   <div class="modal-overlay" id="bonusModal">
     <div class="modal-box">
       <div class="modal-header">
         <div>
-          <div class="modal-title">賞与ルール</div>
+          <div class="modal-title">賞与ルール【まんてん個別】</div>
         </div>
         <button class="modal-close" id="bonusModalClose">✕</button>
       </div>
@@ -1961,6 +2056,43 @@
   }
 
 
+  // ── EVENT MODAL ──
+  const EVENTS = [
+    { period: "3月", name: "入試対策説明会（新中3対象）" },
+    { period: "4月", name: "模試" },
+    { period: "9月・10月・11月", name: "志望校別対策（中3対象）" },
+    { period: "8月", name: "模試" },
+    { period: "12月", name: "模試" },
+    { period: "1月", name: "模試（中3）" },
+    { period: "12月・1月・2月", name: "公立高校入試対策" },
+  ];
+
+  function openEventModal() {
+    document.getElementById('eventBody').innerHTML = `
+      <div class="event-list">
+        ${EVENTS.map(e => `
+          <div class="event-item">
+            <span class="event-item-period">${e.period}</span>
+            <span class="event-item-name">${e.name}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    document.getElementById('eventModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('eventClose').addEventListener('click', () => {
+    document.getElementById('eventModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('eventModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+
   // ── SALARY SLIP MODAL ──
   function openSalarySlipModal() {
     document.getElementById('salarySlipBody').innerHTML = `
@@ -2208,7 +2340,7 @@
           payDate: "4月25日",
           criteria: "冬期講習目標＆通年目標",
           rules: [
-            { cond: "①冬期講習 〇　通年目標 〇", rate: "1.0倍", note: "コマ数管理表で厳しい教室はMGに相談" },
+            { cond: "①冬期講習 〇　通年目標 〇", rate: "1.0倍", note: "" },
             { cond: "②冬期講習 〇　通年目標 ×", rate: "0.7倍", note: "" },
             { cond: "③冬期講習 ×　通年目標 〇", rate: "0.7倍", note: "" },
             { cond: "④両方 ×", rate: "0.5倍", note: "" },
@@ -2221,7 +2353,7 @@
           payDate: "10月25日",
           criteria: "夏期講習目標＆上半期目標",
           rules: [
-            { cond: "①夏期講習 〇　上半期目標 〇", rate: "1.0倍", note: "コマ数管理表で厳しい教室はMGに相談" },
+            { cond: "①夏期講習 〇　上半期目標 〇", rate: "1.0倍", note: "" },
             { cond: "②夏期講習 〇　上半期目標 ×", rate: "0.7倍", note: "" },
             { cond: "③夏期講習 ×　上半期目標 〇", rate: "0.7倍", note: "" },
             { cond: "④両方 ×", rate: "0.5倍", note: "" },
