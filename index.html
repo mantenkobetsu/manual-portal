@@ -1192,27 +1192,6 @@
     </div>
   </section>
 
-  <section class="announce">
-    <div class="announce-header">
-      <div class="announce-dot"></div>
-      <span class="announce-title">随時更新：変更の可能性あり</span>
-    </div>
-    <div class="announce-list">
-      <div class="announce-item">
-        <span class="announce-dot-bullet">▸</span>
-        <span>給与テーブル<span class="announce-tag">2026年4月現在</span></span>
-      </div>
-      <div class="announce-item">
-        <span class="announce-dot-bullet">▸</span>
-        <span>賞与ルール<span class="announce-tag">2025年度</span></span>
-      </div>
-      <div class="announce-item">
-        <span class="announce-dot-bullet">▸</span>
-        <span>講習ルール<span class="announce-tag">2025年</span></span>
-      </div>
-    </div>
-  </section>
-
 
 <!-- BONUS MODAL -->
   <div class="modal-overlay" id="bonusModal">
@@ -1383,6 +1362,20 @@
     </div>
   </div>
 
+  <!-- SALARY SLIP MODAL -->
+  <div class="modal-overlay" id="salarySlipModal">
+    <div class="modal-box" style="max-width:560px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">給与明細作成</div>
+          <div class="modal-subtitle">講師への支払い明細・源泉徴収票</div>
+        </div>
+        <button class="modal-close" id="salarySlipClose">✕</button>
+      </div>
+      <div class="modal-body" id="salarySlipBody"></div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -1395,7 +1388,6 @@
     // 1: IT・システム
     [
       { name: "モノグサの基本的な操作方法", detail: "Monoxer の基本操作・機能ガイド", url: "https://held-mimosa-64c.notion.site/Monoxer-0e5798d198df40e0b6893a15dc729e98?source=copy_link" },
-      { name: "BUILDER視聴用アカウントの追加・端末準備", detail: "アカウント作成・端末セットアップ手順", url: "https://held-mimosa-64c.notion.site/BUILDER-4453edfd05fc4fc6b6d15d8c57786f33" },
       { name: "パソコンの設定", detail: "PC初期設定・各種ソフトのインストール手順", url: "https://held-mimosa-64c.notion.site/1cb4bf837e2780249293f76a80965255?source=copy_link" },
       { name: "フォレスタの学年下げ", detail: "フォレスタ上での学年変更手順", url: "https://held-mimosa-64c.notion.site/3124bf837e27800b8cb2cfebcafff210?source=copy_link" },
     ],
@@ -1422,6 +1414,7 @@
     // 5: 講師
     [
       { name: "講師情報の登録", detail: "講師プロフィール・担当情報の登録手順", url: "https://held-mimosa-64c.notion.site/2bc4bf837e278086b0fbc8797d59e565?source=copy_link" },
+      { name: "給与明細作成", detail: "講師への支払い明細・源泉徴収票の作成方法", url: "#", modal: "salary_slip" },
     ],
     // 6: 給与・休暇
     [
@@ -1439,8 +1432,8 @@
     ],
     // 8: 教室長タスク
     [
-      { name: "点数アップ写真の掲載", detail: "生徒の点数アップ実績写真の掲載手順", url: "#" },
-      { name: "講師写真の更新（ウェブサイト）", detail: "ウェブサイト上の講師紹介写真の更新方法", url: "#" },
+      { name: "点数アップ写真の掲載【まんてん個別】", detail: "生徒の点数アップ実績写真の掲載手順", url: "https://held-mimosa-64c.notion.site/3ca4bf837e2780d0819acd3fbbb2e383?pvs=74" },
+      { name: "【講師写真の更新(ウェブサイト.まんてん個別)】", detail: "ウェブサイト上の講師紹介写真の更新方法", url: "https://held-mimosa-64c.notion.site/3d04bf837e27808e92f0edf671f39de4" },
     ],
   ];
 
@@ -1458,6 +1451,7 @@
     purchase: 'openPurchaseModal',
     repair: 'openRepairModal',
     incentive: 'openIncentiveModal',
+    salary_slip: 'openSalarySlipModal',
   };
 
   const COLORS = [
@@ -1967,6 +1961,44 @@
   }
 
 
+  // ── SALARY SLIP MODAL ──
+  function openSalarySlipModal() {
+    document.getElementById('salarySlipBody').innerHTML = `
+      <div class="training-box">
+        <div class="training-card">
+          <div class="training-card-title">■ 支払い明細を求められた場合</div>
+          <div class="training-note">雇用契約ではないため、報酬明細を作ってお渡しください。</div>
+          <div class="training-example">
+            <a href="https://drive.google.com/drive/folders/1LdSuswOvXc27CevFSox-6LBHLjivySbt?usp=drive_link" target="_blank">https://drive.google.com/drive/folders/1LdSuswOvXc27CevFSox-6LBHLjivySbt?usp=drive_link</a>
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="training-card-title">■ 源泉徴収票を求められた場合</div>
+          <div class="training-note">
+            下記の「入力シート」の黄色部分を記入してください。
+          </div>
+          <div class="training-example">
+            <a href="https://drive.google.com/drive/folders/14pbHjsbhMnZSPUjYlZxMf45ciWpiqS4U?usp=drive_link" target="_blank">https://drive.google.com/drive/folders/14pbHjsbhMnZSPUjYlZxMf45ciWpiqS4U?usp=drive_link</a>
+          </div>
+          <div class="training-caution">⚠ 入力シートの黄色部分を記入したら、2シート目の右半分をお渡しください。</div>
+        </div>
+      </div>
+    `;
+    document.getElementById('salarySlipModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('salarySlipClose').addEventListener('click', () => {
+    document.getElementById('salarySlipModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('salarySlipModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+
   // ── KYUKA (休暇) MODAL ──
   function openKyukaModal() {
     document.getElementById('kyukaBody').innerHTML = `
@@ -2077,6 +2109,10 @@
           <div class="training-note">
             経験者：<strong>30万円</strong>／教室の講師から社員：<strong>20万円</strong>
           </div>
+        </div>
+        <div class="training-card">
+          <div class="training-card-title">③ 成績UP率／合格率TOP</div>
+          <div class="training-rule">成績UP率や合格率がTOPの教室・担当者に支給</div>
         </div>
       </div>
     `;
