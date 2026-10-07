@@ -2345,7 +2345,7 @@
             { cond: "③冬期講習 ×　通年目標 〇", rate: "0.7倍", note: "" },
             { cond: "④両方 ×", rate: "0.5倍", note: "" },
           ],
-          twoStaff: "2人体制の場合：上記金額を 教室長 70% ／ 副教室長 30% で按分",
+          twoStaff: null,
           twoStaffNote: "副教室長は倍率を一段階下げて計算：1.0倍→0.7倍／0.7倍→0.5倍／0.5倍→0.3倍",
           caution: "面談進捗表と kintone の売上目標は異なります。冬期目標の〇×は面談進捗表の数値で決定。"
         },
@@ -2358,12 +2358,13 @@
             { cond: "③夏期講習 ×　上半期目標 〇", rate: "0.7倍", note: "" },
             { cond: "④両方 ×", rate: "0.5倍", note: "" },
           ],
-          twoStaff: "2人体制の場合：上記金額を 教室長 70% ／ 副教室長 30% で按分",
+          twoStaff: null,
           twoStaffNote: "副教室長は倍率を一段階下げて計算：1.0倍→0.7倍／0.7倍→0.5倍／0.5倍→0.3倍",
           caution: "面談進捗表と kintone の売上目標は異なります。夏期目標の〇×は面談進捗表の数値で決定。"
         },
       ],
-      incentiveNote: "インセンティブは毎年の講習ルールに基づく"
+      incentiveNote: "インセンティブは毎年の講習ルールに基づく",
+      incentiveTwoStaff: "2人体制の場合：上記金額を 教室長 70% ／ 副教室長 30% で按分"
     },
     {
       name: "40名以下の教室",
@@ -2462,6 +2463,7 @@
     h += `<div class="bonus-section">
       <div class="bonus-section-title">インセンティブ</div>
       <div class="bonus-note" style="border-left-color:var(--text-tertiary)">${s.incentiveNote}</div>
+      ${s.incentiveTwoStaff ? `<div class="bonus-note">${s.incentiveTwoStaff}</div>` : ''}
     </div>`;
 
     return h;
