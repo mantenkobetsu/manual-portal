@@ -1253,7 +1253,7 @@
       <div class="cat-card c3" data-cat="8">
         <div class="cat-icon">📋</div>
         <div class="cat-name">教室長タスク</div>
-        <div class="cat-desc">写真掲載・ウェブサイト更新</div>
+        <div class="cat-desc">写真掲載・ウェブサイト更新・クオカード配布</div>
         <div class="cat-footer">
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
@@ -1457,6 +1457,20 @@
     </div>
   </div>
 
+  <!-- QUOCARD MODAL -->
+  <div class="modal-overlay" id="quocardModal">
+    <div class="modal-box" style="max-width:600px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">クオカード配布</div>
+          <div class="modal-subtitle">購入申請〜コミルでの配布手順</div>
+        </div>
+        <button class="modal-close" id="quocardClose">✕</button>
+      </div>
+      <div class="modal-body" id="quocardBody"></div>
+    </div>
+  </div>
+
   <!-- SALARY SLIP MODAL -->
   <div class="modal-overlay" id="salarySlipModal">
     <div class="modal-box" style="max-width:560px">
@@ -1529,6 +1543,7 @@
     [
       { name: "点数アップ写真の掲載【まんてん個別】", detail: "生徒の点数アップ実績写真の掲載手順", url: "https://held-mimosa-64c.notion.site/3ca4bf837e2780d0819acd3fbbb2e383?pvs=74" },
       { name: "【講師写真の更新(ウェブサイト.まんてん個別)】", detail: "ウェブサイト上の講師紹介写真の更新方法", url: "https://held-mimosa-64c.notion.site/3d04bf837e27808e92f0edf671f39de4" },
+      { name: "【クオカード配布】", detail: "月末の購入申請〜コミルでの配布手順", url: "#", modal: "quocard" },
     ],
   ];
 
@@ -1547,6 +1562,7 @@
     repair: 'openRepairModal',
     incentive: 'openIncentiveModal',
     salary_slip: 'openSalarySlipModal',
+    quocard: 'openQuocardModal',
   };
 
   const COLORS = [
@@ -2752,6 +2768,55 @@
     document.body.style.overflow = '';
   });
   document.getElementById('repairModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+
+  // ── QUOCARD MODAL ──
+  const QUOCARD_CSV_IMG = "data:image/png;base64,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";
+
+  function openQuocardModal() {
+    document.getElementById('quocardBody').innerHTML = `
+      <div class="repair-box">
+        <div class="repair-step">
+          <div class="repair-num">1</div>
+          <div class="repair-content">
+            <div class="repair-title">月末に購入申請</div>
+            <div class="repair-desc">月末にクオカードの購入申請を行ってください。</div>
+          </div>
+        </div>
+        <div class="repair-caution">
+          ⚠ 申請内容と添付する申込書の情報が<strong>必ず合致する</strong>ようにしてください。<br>
+          合致しない場合は、必ず詳細を<strong>備考欄に記入</strong>してください。
+        </div>
+        <div class="repair-connector">↓</div>
+        <div class="repair-step">
+          <div class="repair-num">2</div>
+          <div class="repair-content">
+            <div class="repair-title">CSVファイルを受け取り、コミルで配布</div>
+            <div class="repair-desc">
+              各教室長の個別メッセージにてCSVファイルが届きます。<br>
+              CSV内のURL一つ一つが電子クオカードになっているため、URLを<strong>コミル</strong>にて配布対象者に送付してください。
+            </div>
+            <div class="haizoku-alt">※CSVの<strong>C列</strong>にURLがあります</div>
+            <div class="training-example" style="padding:8px;overflow-x:auto">
+              <img src="${QUOCARD_CSV_IMG}" alt="CSVイメージ（C列：バリューコードURL）" style="display:block;max-width:100%;height:auto;border-radius:4px">
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('quocardModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('quocardClose').addEventListener('click', () => {
+    document.getElementById('quocardModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('quocardModal').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) {
       e.currentTarget.classList.remove('open');
       document.body.style.overflow = '';
