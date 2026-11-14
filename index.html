@@ -143,6 +143,28 @@
     letter-spacing: 0.04em;
   }
 
+  /* ── BRAND SWITCH ── */
+  .brand-switch { margin-bottom: 32px; }
+  .brand-tabs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 6px; box-shadow: var(--shadow);
+  }
+  .brand-tab {
+    font-family: var(--body); font-size: 13px; font-weight: 700;
+    color: var(--text-secondary); background: transparent;
+    border: none; border-radius: 10px; padding: 12px 10px;
+    cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+  .brand-tab:hover { background: var(--surface2); color: var(--text-primary); }
+  .brand-tab.active[data-brand="muji"] {
+    background: #e53935; color: #fff; box-shadow: 0 3px 10px rgba(229,57,53,0.3);
+  }
+  .brand-tab.active[data-brand="plus"] {
+    background: var(--accent); color: #fff; box-shadow: 0 3px 10px rgba(67,97,238,0.3);
+  }
+  .cat-card.brand-hidden { display: none; }
+
   .section-label {
     font-family: var(--mono);
     font-size: 10px;
@@ -1174,6 +1196,14 @@
     <p class="header-desc">カテゴリをクリックするとマニュアル一覧が表示されます</p>
   </header>
 
+  <section class="brand-switch">
+    <p class="section-label">事業を選択</p>
+    <div class="brand-tabs" id="brandTabs">
+      <button class="brand-tab" data-brand="muji">まんてん個別</button>
+      <button class="brand-tab" data-brand="plus">まんてん個別プラス</button>
+    </div>
+  </section>
+
   <section class="categories">
     <p class="section-label">カテゴリから探す</p>
     <div class="cat-grid" id="catGrid">
@@ -1190,7 +1220,7 @@
       <div class="cat-card c2" data-cat="1">
         <div class="cat-icon">💻</div>
         <div class="cat-name">IT・システム</div>
-        <div class="cat-desc">PC初期設定やモノグサなどシステム関連</div>
+        <div class="cat-desc" data-desc-muji="PC初期設定やモノグサなどシステム関連" data-desc-plus="PC初期設定・カメラ設定などシステム関連">PC初期設定やモノグサなどシステム関連</div>
         <div class="cat-footer">
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
@@ -1235,7 +1265,7 @@
       <div class="cat-card c7" data-cat="6">
         <div class="cat-icon">💰</div>
         <div class="cat-name">給与・休暇</div>
-        <div class="cat-desc">給与テーブル・賞与規定</div>
+        <div class="cat-desc" data-desc-muji="給与テーブル・賞与規定" data-desc-plus="給与テーブル・手当・休暇">給与テーブル・賞与規定</div>
         <div class="cat-footer">
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
@@ -1253,7 +1283,7 @@
       <div class="cat-card c3" data-cat="8">
         <div class="cat-icon">📋</div>
         <div class="cat-name">教室長タスク</div>
-        <div class="cat-desc">写真掲載・ウェブサイト更新・クオカード配布</div>
+        <div class="cat-desc" data-desc-muji="写真掲載・ウェブサイト更新・クオカード配布" data-desc-plus="クオカード配布">写真掲載・ウェブサイト更新・クオカード配布</div>
         <div class="cat-footer">
           <div class="cat-toggle"><svg viewBox="0 0 10 10" fill="none" stroke-width="1.8"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
         </div>
@@ -1505,14 +1535,14 @@
   const MANUALS = [
     // 0: 講習
     [
-      { name: "講習ルール", detail: "夏期/冬期講習の実施ルール", url: "https://held-mimosa-64c.notion.site/1f74bf837e278045885bfd3969dcdc4d" },
-      { name: "インセンティブ実績例", detail: "教室別インセンティブ実績金額", url: "#", modal: "incentive" },
+      { name: "講習ルール", brand: "muji", detail: "夏期/冬期講習の実施ルール", url: "https://held-mimosa-64c.notion.site/1f74bf837e278045885bfd3969dcdc4d" },
+      { name: "インセンティブ実績例", brand: "muji", detail: "教室別インセンティブ実績金額", url: "#", modal: "incentive" },
     ],
     // 1: IT・システム
     [
-      { name: "モノグサの基本的な操作方法", detail: "Monoxer の基本操作・機能ガイド", url: "https://held-mimosa-64c.notion.site/Monoxer-0e5798d198df40e0b6893a15dc729e98?source=copy_link" },
+      { name: "モノグサの基本的な操作方法", brand: "muji", detail: "Monoxer の基本操作・機能ガイド", url: "https://held-mimosa-64c.notion.site/Monoxer-0e5798d198df40e0b6893a15dc729e98?source=copy_link" },
       { name: "パソコンの設定", detail: "PC初期設定・各種ソフトのインストール手順", url: "https://held-mimosa-64c.notion.site/1cb4bf837e2780249293f76a80965255?source=copy_link" },
-      { name: "フォレスタの学年下げ", detail: "フォレスタ上での学年変更手順", url: "https://held-mimosa-64c.notion.site/3124bf837e27800b8cb2cfebcafff210?source=copy_link" },
+      { name: "フォレスタの学年下げ", brand: "muji", detail: "フォレスタ上での学年変更手順", url: "https://held-mimosa-64c.notion.site/3124bf837e27800b8cb2cfebcafff210?source=copy_link" },
       { name: "【カメラ設定】", detail: "eufy Security のアカウント追加・連続録画の設定", url: "#", modal: "camera" },
     ],
     // 2: 発注/修繕
@@ -1543,7 +1573,7 @@
     // 6: 給与・休暇
     [
       { name: "給与テーブル", detail: "等級別の給与体系一覧", url: "#", modal: "salary" },
-      { name: "賞与規定", detail: "賞与・インセンティブルール", url: "#", modal: "bonus" },
+      { name: "賞与規定", brand: "muji", detail: "賞与・インセンティブルール", url: "#", modal: "bonus" },
       { name: "研修期間中の賞与ルール", detail: "入社後初回賞与の支給条件・按分方法", url: "#", modal: "training_bonus" },
       { name: "通勤/住宅手当", detail: "手当の選択方法・支給条件", url: "#", modal: "tsukkin" },
       { name: "休暇", detail: "休暇制度について", url: "#", modal: "kyuka" },
@@ -1556,8 +1586,8 @@
     ],
     // 8: 教室長タスク
     [
-      { name: "点数アップ写真の掲載【まんてん個別】", detail: "生徒の点数アップ実績写真の掲載手順", url: "https://held-mimosa-64c.notion.site/3ca4bf837e2780d0819acd3fbbb2e383?pvs=74" },
-      { name: "【講師写真の更新(ウェブサイト.まんてん個別)】", detail: "ウェブサイト上の講師紹介写真の更新方法", url: "https://held-mimosa-64c.notion.site/3d04bf837e27808e92f0edf671f39de4" },
+      { name: "点数アップ写真の掲載【まんてん個別】", brand: "muji", detail: "生徒の点数アップ実績写真の掲載手順", url: "https://held-mimosa-64c.notion.site/3ca4bf837e2780d0819acd3fbbb2e383?pvs=74" },
+      { name: "【講師写真の更新(ウェブサイト.まんてん個別)】", brand: "muji", detail: "ウェブサイト上の講師紹介写真の更新方法", url: "https://held-mimosa-64c.notion.site/3d04bf837e27808e92f0edf671f39de4" },
       { name: "【クオカード配布】", detail: "月末の購入申請〜コミルでの配布手順", url: "#", modal: "quocard" },
     ],
   ];
@@ -1589,12 +1619,39 @@
   const grid = document.getElementById("catGrid");
   let activePanel = null;
 
+  // ── BRAND (事業) SWITCH ──
+  // brand: "muji" の項目は まんてん個別 のみ表示。brand 未指定は両事業で表示。
+  let currentBrand = 'muji';
+  try { const b = localStorage.getItem('portalBrand'); if (b === 'muji' || b === 'plus') currentBrand = b; } catch (e) {}
+
+  function visibleItems(catIdx) {
+    return MANUALS[catIdx].filter(m => !m.brand || m.brand === currentBrand);
+  }
+
+  function applyBrand(brand) {
+    currentBrand = brand;
+    try { localStorage.setItem('portalBrand', brand); } catch (e) {}
+    closeActive();
+    document.querySelectorAll('.brand-tab').forEach(t => t.classList.toggle('active', t.dataset.brand === brand));
+    document.querySelectorAll('.cat-card').forEach(card => {
+      const idx = parseInt(card.dataset.cat);
+      card.classList.toggle('brand-hidden', visibleItems(idx).length === 0);
+      const desc = card.querySelector('.cat-desc');
+      const d = desc && desc.getAttribute('data-desc-' + brand);
+      if (d) desc.textContent = d;
+    });
+  }
+
+  document.querySelectorAll('.brand-tab').forEach(t => {
+    t.addEventListener('click', () => applyBrand(t.dataset.brand));
+  });
+
   function buildPanel(catIdx) {
     const panel = document.createElement("div");
     panel.className = "manual-panel visible";
     panel.style.gridColumn = "1 / -1";
     const color = COLORS[catIdx];
-    const items = MANUALS[catIdx];
+    const items = visibleItems(catIdx);
     panel.innerHTML = `
       <div class="manual-panel-inner">
         <div class="manual-panel-title">マニュアル一覧</div>
@@ -1661,6 +1718,8 @@
       setTimeout(() => { panel.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 50);
     });
   });
+
+  applyBrand(currentBrand);
 
   // ── SALARY TABLE DATA ──
   const SALARY_SHEETS = [
@@ -2278,7 +2337,7 @@
           <div class="training-card-title">③ 成績UP率／合格率TOP</div>
           <div class="training-rule">成績UP率や合格率がTOPの教室・担当者に支給</div>
         </div>
-        <div class="training-card">
+        ${currentBrand === 'muji' ? `<div class="training-card">
           <div class="training-card-title">④ 体験成功率【まんてん個別】</div>
           <div class="training-rule">【教室成績】</div>
           <div class="training-note">
@@ -2290,7 +2349,7 @@
             ・エリア平均85％以上でエリアメンバーそれぞれに <strong>1万円</strong><br>
             ・エリア平均90％以上でエリアメンバーそれぞれに <strong>3万円</strong>
           </div>
-        </div>
+        </div>` : ''}
       </div>
     `;
     document.getElementById('rinjiBonusModal').classList.add('open');
